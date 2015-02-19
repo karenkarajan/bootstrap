@@ -8,19 +8,45 @@
     <meta name="description" content="AngularJS (Angular) native directives for Bootstrap. Small footprint (5kB gzipped!), no 3rd party JS dependencies (jQuery, bootstrap JS) required! Widgets: <% demoModules.forEach(function(module) { %><%= module.displayName %>, <% }); %>">
     <meta name="google-site-verification" content="7lc5HyceLDqpV_6oNHteYFfxDJH7-S3DwnJKtNUKcRg" />
 
+
+
+    <script src="assets/vectormap/jquery.js"></script>
+    <script src="assets/vectormap/jquery-jvectormap-2.0.1.min.js"></script>
+    <script src="http://jvectormap.com/js/jquery-jvectormap-world-mill-en.js"></script>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.7/fastclick.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.0.0/FileSaver.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/<%= ngversion %>/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/<%= ngversion %>/angular-touch.min.js"></script>
     <script src="ui-bootstrap-tpls-<%= pkg.version%>.min.js"></script>
+
     <script src="assets/plunker.js"></script>
     <script src="assets/app.js"></script>
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/<%= bsversion %>/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="assets/rainbow.css"/>
     <link rel="stylesheet" href="assets/demo.css"/>
+    <link rel="stylesheet" href="assets/vectormap/css/jquery-jvectormap-2.0.1.css"/>
+
+
     <link rel="author" href="https://github.com/angular-ui/bootstrap/graphs/contributors">
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("input[name='themes']").click(function(){
+                if($('input:radio[name=themes]:checked').val() == "flatui"){
+                    //alert($('input:radio[name=themes]:checked').val());
+                    //$('#select-table > .roomNumber').attr('enabled',false);
+                    $('<link rel="stylesheet" href="assets/flat.ui.min.css" type="text/css" id="bootstrapstyle"  />').appendTo('head');
+                }else{
+                    $("#bootstrapstyle").attr("disabled", "disabled");
+                }
+            });
+        });
+    </script>
+
 </head>
 <body class="ng-cloak" ng-controller="MainCtrl">
 <header class="navbar navbar-default navbar-fixed-top">
@@ -33,12 +59,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand visible-xs" href="#">UI Bootstrap</a>
+                <a class="navbar-brand visible-xs" href="#">Equinix Bootstrap</a>
             </div>
             <nav class="hidden-xs">
                 <ul class="nav navbar-nav">
                     <a href="#top" role="button" class="navbar-brand">
-                        UI Bootstrap
+                        Equinix Bootstrap
                     </a>
                     <li class="dropdown" dropdown>
                         <a role="button" class="dropdown-toggle" dropdown-toggle>
@@ -65,14 +91,14 @@
     <header class="bs-header text-center" id="overview">
         <div class="container">
             <h1>
-                UI Bootstrap
+                Equinix Bootstrap
             </h1>
 
-            <p>Bootstrap components written in pure <a href="http://angularjs.org">AngularJS</a> by the <a
-                    href="http://angular-ui.github.io">AngularUI Team</a></p>
+            <p>Angular UI components written in hybrid <a href="http://angularjs.org">AngularJS</a> by the <a
+                    href="http://angular-ui.github.io">Equinix Cloud Exchange Team</a></p>
 
             <p>
-                <a class="btn btn-outline-inverse btn-lg" href="https://github.com/angular-ui/bootstrap"><i class="icon-github"></i>Code on Github</a>
+                <a class="btn btn-outline-inverse btn-lg" href="https://github.com/karenkarajan/bootstrap"><i class="icon-github"></i>Code on Github</a>
                 <button type="button" class="btn btn-outline-inverse btn-lg" ng-click="showDownloadModal()">
                     <i class="glyphicon glyphicon-download-alt"></i> Download <small>(<%= pkg.version%>)</small>
                 </button>
@@ -80,45 +106,7 @@
             </p>
         </div>
         <div class="bs-social container">
-            <ul class="bs-social-buttons">
-                <li>
-                    <iframe src="//ghbtns.com/github-btn.html?user=angular-ui&repo=bootstrap&type=watch&count=true"
-                            allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-                </li>
-                <li>
-                    <iframe src="//ghbtns.com/github-btn.html?user=angular-ui&repo=bootstrap&type=fork&count=true"
-                            allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
-                </li>
-                <li>
-                    <a href="https://twitter.com/share" class="twitter-share-button"
-                       data-hashtags="angularjs">Tweet</a>
-                    <script>!function (d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (!d.getElementById(id)) {
-                            js = d.createElement(s);
-                            js.id = id;
-                            js.src = "//platform.twitter.com/widgets.js";
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }
-                    }(document, "script", "twitter-wjs");</script>
-                </li>
-                <li>
-                    <!-- Place this tag where you want the +1 button to render. -->
-                    <div class="g-plusone" data-size="medium"></div>
 
-                    <!-- Place this tag after the last +1 button tag. -->
-                    <script type="text/javascript">
-                        (function () {
-                            var po = document.createElement('script');
-                            po.type = 'text/javascript';
-                            po.async = true;
-                            po.src = 'https://apis.google.com/js/plusone.js';
-                            var s = document.getElementsByTagName('script')[0];
-                            s.parentNode.insertBefore(po, s);
-                        })();
-                    </script>
-                </li>
-            </ul>
         </div>
     </header>
     <div class="container">
@@ -132,6 +120,19 @@
                         <% }); %>
                     </ul>
                 </section>
+
+                <section>
+                    <h3> Theme Options </h3>
+
+                    <input type="radio" name="themes" value="BootStrap" id="bootstrap">
+                    <label for="bootstrap">BootStrap</label>
+
+                    <input type="radio" name="themes" value="flatui" id="flatui">
+                    <label for="flatui">Flat UI</label>
+
+                </section>
+
+
 
                 <section id="getting_started">
                     <div class="page-header">
